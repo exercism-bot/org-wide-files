@@ -1,0 +1,18 @@
+name: Configlet
+
+on: [push, pull_request, workflow_dispatch]
+
+jobs:
+  configlet:
+    name: Lint
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@5a4ac9002d0be2fb38bd78e4b4dbde5606d7042f
+
+      - name: Fetch configlet
+        uses: exercism/github-actions/configlet-ci@main
+
+      - name: Run configlet lint
+        run: configlet lint
